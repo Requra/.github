@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1040" role="img" aria-labelledby="title desc">
+  <title id="title">Requra.AI current asynchronous analysis lifecycle</title>
+  <desc id="desc">A web or mobile client starts a project-scoped analysis run. The ASP.NET Core backend validates and persists an AnalysisRun, starts its current analysis worker, combines backend-owned document text, submits through the FastAPI process-json compatibility endpoint, and polls AI status. The AI service fingerprints and persists a durable job, dispatches worker execution, and stores the final result. The backend persists AnalysisResult and returns run status and dashboard data to the client.</desc>
+  <defs>
+    <marker id="p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#6D3ED1"/></marker>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#547EA8"/></marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#8791A2"/></marker>
+  </defs>
+  <rect width="1400" height="1040" rx="28" fill="#FBFAFE"/>
+  <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif">
+    <text x="52" y="58" fill="#25183C" font-size="30" font-weight="800">Current asynchronous analysis lifecycle</text>
+    <text x="52" y="89" fill="#6F647C" font-size="16">Backend compatibility submission plus authoritative polling; durable AI execution remains separated.</text>
+
+    <!-- participant headers -->
+    <g font-size="16" font-weight="800" text-anchor="middle">
+      <g transform="translate(30 120)"><rect width="160" height="60" rx="16" fill="#F0EBFD" stroke="#8B6AE3" stroke-width="2"/><text x="80" y="37" fill="#3D2C6D">Web / mobile</text></g>
+      <g transform="translate(230 120)"><rect width="160" height="60" rx="16" fill="#EEF3FA" stroke="#6F91B5" stroke-width="2"/><text x="80" y="37" fill="#294B70">ASP.NET API</text></g>
+      <g transform="translate(430 120)"><rect width="160" height="60" rx="16" fill="#FFFFFF" stroke="#9FB5CB" stroke-width="2"/><text x="80" y="37" fill="#294B70">Backend DB</text></g>
+      <g transform="translate(630 120)"><rect width="160" height="60" rx="16" fill="#EEF3FA" stroke="#6F91B5" stroke-width="2"/><text x="80" y="30" fill="#294B70">Backend analysis</text><text x="80" y="49" fill="#294B70">worker</text></g>
+      <g transform="translate(830 120)"><rect width="160" height="60" rx="16" fill="#F0EBFD" stroke="#8B6AE3" stroke-width="2"/><text x="80" y="30" fill="#3D2C6D">FastAPI</text><text x="80" y="49" fill="#3D2C6D">compatibility API</text></g>
+      <g transform="translate(1030 120)"><rect width="160" height="60" rx="16" fill="#FFFFFF" stroke="#A994DF" stroke-width="2"/><text x="80" y="30" fill="#43316A">AI durable state</text><text x="80" y="49" fill="#43316A">+ Redis / RQ</text></g>
+      <g transform="translate(1230 120)"><rect width="140" height="60" rx="16" fill="#6D3ED1"/><text x="70" y="37" fill="#FFFFFF">AI worker</text></g>
+    </g>
+
+    <!-- lifelines -->
+    <g stroke="#D4CEE1" stroke-width="1.5" stroke-dasharray="6 7">
+      <line x1="110" y1="180" x2="110" y2="920"/><line x1="310" y1="180" x2="310" y2="920"/>
+      <line x1="510" y1="180" x2="510" y2="920"/><line x1="710" y1="180" x2="710" y2="920"/>
+      <line x1="910" y1="180" x2="910" y2="920"/><line x1="1110" y1="180" x2="1110" y2="920"/>
+      <line x1="1300" y1="180" x2="1300" y2="920"/>
+    </g>
+
+    <!-- message helpers: labels centered above arrows -->
+    <g fill="#4F455C" font-size="14">
+      <text x="210" y="219" text-anchor="middle">1 · POST /api/projects/{projectId}/ai/runs</text>
+      <line x1="110" y1="230" x2="300" y2="230" stroke="#6D3ED1" stroke-width="2.8" marker-end="url(#p)"/>
+
+      <text x="410" y="284" text-anchor="middle">2 · validate project/documents + persist AnalysisRun</text>
+      <line x1="310" y1="295" x2="500" y2="295" stroke="#547EA8" stroke-width="2.6" marker-end="url(#b)"/>
+
+      <text x="510" y="338" text-anchor="middle">QUEUED run state</text>
+      <line x1="500" y1="350" x2="320" y2="350" stroke="#547EA8" stroke-width="2.4" marker-end="url(#b)"/>
+
+      <text x="510" y="404" text-anchor="middle">3 · start current processing task</text>
+      <line x1="310" y1="415" x2="700" y2="415" stroke="#547EA8" stroke-width="2.6" marker-end="url(#b)"/>
+
+      <g transform="translate(624 446)">
+        <rect width="172" height="76" rx="16" fill="#EEF3FA" stroke="#6F91B5" stroke-width="1.8"/>
+        <text x="86" y="29" text-anchor="middle" fill="#294B70" font-size="15" font-weight="800">4 · recover source</text>
+        <text x="86" y="53" text-anchor="middle" fill="#63778D" font-size="14">combine document text</text>
+      </g>
+
+      <text x="810" y="555" text-anchor="middle">5 · POST /process-json</text>
+      <line x1="710" y1="566" x2="900" y2="566" stroke="#6D3ED1" stroke-width="2.8" marker-end="url(#p)"/>
+
+      <text x="1010" y="620" text-anchor="middle">6 · validate + fingerprint + persist + dispatch</text>
+      <line x1="910" y1="631" x2="1100" y2="631" stroke="#6D3ED1" stroke-width="2.8" marker-end="url(#p)"/>
+
+      <text x="1205" y="685" text-anchor="middle">7 · execute attempt</text>
+      <line x1="1110" y1="696" x2="1290" y2="696" stroke="#6D3ED1" stroke-width="2.8" marker-end="url(#p)"/>
+
+      <g transform="translate(1208 726)">
+        <rect width="184" height="94" rx="16" fill="#F0EBFD" stroke="#8B6AE3" stroke-width="1.8"/>
+        <text x="92" y="28" text-anchor="middle" fill="#3D2C6D" font-size="15" font-weight="800">8 · run graph</text>
+        <text x="92" y="53" text-anchor="middle" fill="#6C6179" font-size="14">retrieval · grounding</text>
+        <text x="92" y="76" text-anchor="middle" fill="#6C6179" font-size="14">stories · quality · summary</text>
+      </g>
+
+      <text x="815" y="855" text-anchor="middle">9 · poll GET /status/{jobId}</text>
+      <line x1="710" y1="866" x2="900" y2="866" stroke="#6D3ED1" stroke-width="2.8" marker-end="url(#p)"/>
+
+      <text x="810" y="907" text-anchor="middle">10 · terminal status + result</text>
+      <line x1="900" y1="918" x2="720" y2="918" stroke="#6D3ED1" stroke-width="2.6" marker-end="url(#p)"/>
+    </g>
+
+    <!-- lower continuation in dedicated panel -->
+    <rect x="40" y="940" width="1320" height="72" rx="18" fill="#FFFFFF" stroke="#D9D1E8" stroke-width="1.5"/>
+    <text x="55" y="968" fill="#4F455C" font-size="14"><tspan font-weight="800">11 · Persist:</tspan> backend worker stores AnalysisResult.RawJson and terminal run state in backend PostgreSQL.</text>
+    <text x="55" y="994" fill="#4F455C" font-size="14"><tspan font-weight="800">12 · Read:</tspan> clients poll run status and request the normalized project results dashboard from the ASP.NET Core API.</text>
+
+    <!-- path note -->
+    <g transform="translate(50 1030)"></g>
+  </g>
+</svg>
