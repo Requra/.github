@@ -1,20 +1,29 @@
 sequenceDiagram
-    participant F as Frontend
-    participant B as .NET backend
-    participant A as FastAPI AI API
-    participant D as Durable store
-    participant Q as Redis/RQ
-    participant W as Worker
-    F->>B: Start analysis
-    B->>A: POST /internal/jobs
-    A->>D: Validate fingerprint and persist
-    A->>Q: Queue work / cache transient input
-    A-->>B: 202 QUEUED or idempotent/conflict
-    Q->>W: Execute attempt
-    W->>W: Recover source and run 15-node graph
-    W->>D: Persist chunks, evidence, quality and result
-    W-->>B: Optional callback after persistence
-    B->>A: Poll status/result
-    A->>D: Read durable state
-    A-->>B: Status / JobResult
-    B-->>F: Normalized result and evidence
+    participant C as Web / mobile client
+    participant B as ASP.NET Core API
+    participant D as Backend PostgreSQL
+    participant W as Backend analysis worker
+    participant A as FastAPI compatibility API
+    participant Q as AI durable state + Redis/RQ
+    participant G as AI worker
+
+    C->>B: POST /api/projects/{projectId}/ai/runs
+    B->>D: Validate project/documents and persist AnalysisRun
+    D-->>B: QUEUED run state
+    B->>W: Start current processing task
+    W->>W: Recover and combine backend-owned document text
+    W->>A: POST /process-json
+    A->>Q: Validate, fingerprint, persist and dispatch
+    Q->>G: Execute attempt
+    G->>G: Run 15-node graph and persist terminal result
+    loop Authoritative backend polling
+        W->>A: GET /status/{jobId}
+        A-->>W: Status, progress and result
+    end
+    W->>D: Persist AnalysisResult.RawJson and terminal state
+    C->>B: Poll run status / request results dashboard
+    B->>D: Read project-scoped run and result
+    D-->>B: Durable application state
+    B-->>C: Normalized status, evidence and result
+
+    Note over A,G: Protected internal jobs remain the production-oriented AI contract.

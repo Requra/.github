@@ -1,32 +1,146 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
-<title id="title">Requra.AI end-to-end platform architecture</title>
-<desc id="desc">Business users access the React web application, which calls an external .NET backend. The backend owns authentication, projects, files, and meetings, and submits durable asynchronous jobs to a FastAPI AI service backed by PostgreSQL, Redis RQ, workers, configurable providers, and pgvector artifacts.</desc>
-<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#7452D8"/></marker><marker id="ad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#8A92A3"/></marker></defs>
-<rect width="1200" height="820" rx="28" fill="#FBFAFE"/>
-<g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif">
-<text x="52" y="58" fill="#25183C" font-size="28" font-weight="800">End-to-end platform architecture</text>
-<text x="52" y="87" fill="#6F647C" font-size="16">Solid paths are verified normal flows. Dashed paths are conditional, external, or planned.</text>
-<g transform="translate(55 125)"><rect width="250" height="92" rx="18" fill="#FFF" stroke="#D9D1E8" stroke-width="2"/><circle cx="42" cy="38" r="12" fill="#7A55D9"/><path d="M24 70c3-15 33-15 36 0" fill="#D9CBFA"/><text x="78" y="37" fill="#302441" font-size="17" font-weight="750">BA · PM · Stakeholder</text><text x="78" y="63" fill="#71677E" font-size="14">create, review, decide</text></g>
-<path d="M305 171H372" stroke="#7452D8" stroke-width="3" marker-end="url(#a)"/>
-<g transform="translate(386 115)"><rect width="240" height="112" rx="20" fill="#F0EBFD" stroke="#8B6AE3" stroke-width="2"/><text x="120" y="38" text-anchor="middle" fill="#3B246D" font-size="20" font-weight="800">React web application</text><text x="120" y="66" text-anchor="middle" fill="#665A76" font-size="14">projects · analysis · review</text><text x="120" y="89" text-anchor="middle" fill="#665A76" font-size="14">meetings · demo runtime</text></g>
-<path d="M626 171H693" stroke="#7452D8" stroke-width="3" marker-end="url(#a)"/>
-<g transform="translate(707 107)"><rect width="300" height="128" rx="20" fill="#EEF3FA" stroke="#6F91B5" stroke-width="2"/><text x="150" y="38" text-anchor="middle" fill="#284A6F" font-size="20" font-weight="800">External .NET backend</text><text x="150" y="66" text-anchor="middle" fill="#5B6E83" font-size="14">auth · project ownership · persistence</text><text x="150" y="89" text-anchor="middle" fill="#5B6E83" font-size="14">files · meetings · AI orchestration</text><text x="150" y="113" text-anchor="middle" fill="#6B7786" font-size="14">source repository not published</text></g>
-<path d="M857 235V278" stroke="#6F91B5" stroke-width="2.5" marker-end="url(#ad)"/>
-<g transform="translate(674 292)"><rect width="160" height="76" rx="16" fill="#FFF" stroke="#9FB5CB"/><text x="80" y="31" text-anchor="middle" fill="#385A7D" font-size="16" font-weight="750">Auth / projects</text><text x="80" y="54" text-anchor="middle" fill="#68798C" font-size="14">external contract</text><rect x="178" width="160" height="76" rx="16" fill="#FFF" stroke="#9FB5CB"/><text x="258" y="31" text-anchor="middle" fill="#385A7D" font-size="16" font-weight="750">File storage</text><text x="258" y="54" text-anchor="middle" fill="#68798C" font-size="14">binary owner</text><rect x="356" width="160" height="76" rx="16" fill="#FFF" stroke="#9FB5CB"/><text x="436" y="31" text-anchor="middle" fill="#385A7D" font-size="16" font-weight="750">Meetings</text><text x="436" y="54" text-anchor="middle" fill="#68798C" font-size="14">recording orchestration</text></g>
-<path d="M707 194C620 250 608 318 608 390" fill="none" stroke="#7452D8" stroke-width="3" marker-end="url(#a)"/>
-<g transform="translate(410 404)"><rect width="396" height="104" rx="20" fill="#F0EBFD" stroke="#8B6AE3" stroke-width="2"/><text x="198" y="35" text-anchor="middle" fill="#3B246D" font-size="20" font-weight="800">FastAPI internal AI API</text><text x="198" y="62" text-anchor="middle" fill="#665A76" font-size="14">validate · fingerprint · persist · dispatch</text><text x="198" y="85" text-anchor="middle" fill="#665A76" font-size="14">service-token protected internal routes</text></g>
-<path d="M495 508V558" stroke="#7452D8" stroke-width="3" marker-end="url(#a)"/><path d="M720 508V558" stroke="#7452D8" stroke-width="3" marker-end="url(#a)"/>
-<g transform="translate(366 570)"><rect width="260" height="86" rx="18" fill="#FFF" stroke="#A994DF" stroke-width="2"/><text x="130" y="32" text-anchor="middle" fill="#43316A" font-size="18" font-weight="800">PostgreSQL durable state</text><text x="130" y="58" text-anchor="middle" fill="#6C6179" font-size="14">jobs · attempts · results · events</text></g>
-<g transform="translate(650 570)"><rect width="220" height="86" rx="18" fill="#FFF" stroke="#A994DF" stroke-width="2"/><text x="110" y="32" text-anchor="middle" fill="#43316A" font-size="18" font-weight="800">Redis / RQ</text><text x="110" y="58" text-anchor="middle" fill="#6C6179" font-size="14">dispatch · transient input</text></g>
-<path d="M760 656V690" stroke="#7452D8" stroke-width="3" marker-end="url(#a)"/>
-<g transform="translate(650 704)"><rect width="220" height="74" rx="18" fill="#6D3ED1"/><text x="110" y="31" text-anchor="middle" fill="#FFF" font-size="18" font-weight="800">AI worker</text><text x="110" y="55" text-anchor="middle" fill="#EEE8FF" font-size="14">15-node LangGraph flow</text></g>
-<path d="M870 741H925" stroke="#8A92A3" stroke-width="2.5" stroke-dasharray="8 7" marker-end="url(#ad)"/>
-<g transform="translate(938 664)"><rect width="210" height="38" rx="12" fill="#FFF8E8" stroke="#D6A64A"/><text x="105" y="25" text-anchor="middle" fill="#73551E" font-size="14" font-weight="700">Chat LLM · conditional</text><rect y="48" width="210" height="38" rx="12" fill="#FFF8E8" stroke="#D6A64A"/><text x="105" y="73" text-anchor="middle" fill="#73551E" font-size="14" font-weight="700">STT · conditional</text><rect y="96" width="210" height="38" rx="12" fill="#FFF8E8" stroke="#D6A64A"/><text x="105" y="121" text-anchor="middle" fill="#73551E" font-size="14" font-weight="700">Embeddings · conditional</text></g>
-<path d="M650 741H530" stroke="#7452D8" stroke-width="3" marker-end="url(#a)"/>
-<g transform="translate(255 690)"><rect width="260" height="88" rx="18" fill="#EAF7F2" stroke="#4A9B7D" stroke-width="2"/><text x="130" y="31" text-anchor="middle" fill="#1F6A51" font-size="18" font-weight="800">PostgreSQL / pgvector</text><text x="130" y="57" text-anchor="middle" fill="#4E7568" font-size="14">chunks · evidence · vectors · quality</text></g>
-<path d="M410 456C300 456 270 311 386 171" fill="none" stroke="#8A92A3" stroke-width="2.5" stroke-dasharray="8 7" marker-end="url(#ad)"/><text x="220" y="370" fill="#6F7785" font-size="14">emergency browser → AI fallback</text>
-<path d="M870 620C1035 610 1080 450 1007 235" fill="none" stroke="#8A92A3" stroke-width="2.5" stroke-dasharray="8 7" marker-end="url(#ad)"/><text x="938" y="520" fill="#6F7785" font-size="14">optional best-effort callback</text>
-<g transform="translate(55 642)"><rect width="174" height="84" rx="18" fill="#F7F7F9" stroke="#9EA4AE" stroke-width="2" stroke-dasharray="7 6"/><text x="87" y="32" text-anchor="middle" fill="#59616D" font-size="17" font-weight="800">Future mobile</text><text x="87" y="57" text-anchor="middle" fill="#747B85" font-size="14">planned / unpublished</text></g>
-<path d="M229 684C270 650 282 245 386 171" fill="none" stroke="#8A92A3" stroke-width="2.5" stroke-dasharray="8 7" marker-end="url(#ad)"/>
-<g transform="translate(52 802)"><line x1="0" y1="0" x2="34" y2="0" stroke="#7452D8" stroke-width="3"/><text x="44" y="5" fill="#5F566A" font-size="14">implemented flow</text><line x1="176" y1="0" x2="210" y2="0" stroke="#8A92A3" stroke-width="2.5" stroke-dasharray="8 7"/><text x="220" y="5" fill="#5F566A" font-size="14">external / conditional / planned</text></g>
-</g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 960" role="img" aria-labelledby="title desc">
+  <title id="title">Requra.AI end-to-end platform architecture</title>
+  <desc id="desc">Verified React, ASP.NET Core, Flutter, and FastAPI repositories. Web traffic follows the integrated backend path. The implemented Flutter client is partly mock-backed while production integration is completed. The backend persists application state and orchestrates durable AI jobs executed by Redis RQ workers and a fifteen-node LangGraph pipeline.</desc>
+  <defs>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#6D3ED1"/></marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#547EA8"/></marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#C47B18"/></marker>
+    <marker id="arrowGray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#8791A2"/></marker>
+  </defs>
+  <rect width="1300" height="960" rx="28" fill="#FBFAFE"/>
+  <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif">
+    <text x="52" y="58" fill="#25183C" font-size="30" font-weight="800">End-to-end platform architecture</text>
+    <text x="52" y="88" fill="#6F647C" font-size="16">Published clients, application backend, and evidence-grounded AI execution.</text>
+
+    <!-- User -->
+    <g transform="translate(45 175)">
+      <rect width="230" height="104" rx="20" fill="#FFFFFF" stroke="#D9D1E8" stroke-width="2"/>
+      <circle cx="42" cy="40" r="13" fill="#7A55D9"/>
+      <path d="M22 76c4-18 36-18 40 0" fill="#D9CBFA"/>
+      <text x="80" y="40" fill="#302441" font-size="17" font-weight="750">BA · PM · Stakeholder</text>
+      <text x="80" y="68" fill="#71677E" font-size="14">create · review · decide</text>
+    </g>
+
+    <!-- Clients -->
+    <g transform="translate(330 120)">
+      <rect width="250" height="112" rx="20" fill="#F0EBFD" stroke="#8B6AE3" stroke-width="2"/>
+      <text x="125" y="40" text-anchor="middle" fill="#3B246D" font-size="20" font-weight="800">React web application</text>
+      <text x="125" y="70" text-anchor="middle" fill="#665A76" font-size="14">projects · analysis · review</text>
+      <text x="125" y="93" text-anchor="middle" fill="#665A76" font-size="14">integrated backend path</text>
+    </g>
+    <g transform="translate(330 260)">
+      <rect width="250" height="122" rx="20" fill="#FFF8E8" stroke="#D49A3A" stroke-width="2"/>
+      <text x="125" y="39" text-anchor="middle" fill="#75501A" font-size="20" font-weight="800">Flutter mobile client</text>
+      <text x="125" y="69" text-anchor="middle" fill="#7A6342" font-size="14">auth · projects · results · meetings</text>
+      <text x="125" y="94" text-anchor="middle" fill="#9A651E" font-size="14" font-weight="700">implemented · integration in progress</text>
+    </g>
+
+    <path d="M275 227H305V176H330" fill="none" stroke="#6D3ED1" stroke-width="3" marker-end="url(#arrowPurple)"/>
+    <path d="M275 227H305V321H330" fill="none" stroke="#C47B18" stroke-width="2.5" stroke-dasharray="8 7" marker-end="url(#arrowAmber)"/>
+
+    <!-- Backend -->
+    <g transform="translate(680 130)">
+      <rect width="350" height="150" rx="22" fill="#EDF3FA" stroke="#6F91B5" stroke-width="2.5"/>
+      <text x="175" y="42" text-anchor="middle" fill="#284A6F" font-size="22" font-weight="800">ASP.NET Core backend</text>
+      <text x="175" y="75" text-anchor="middle" fill="#566E86" font-size="15">.NET 10 · layered application services</text>
+      <text x="175" y="103" text-anchor="middle" fill="#566E86" font-size="14">identity · projects · documents · meetings</text>
+      <text x="175" y="127" text-anchor="middle" fill="#566E86" font-size="14">feedback · persistence · AI orchestration</text>
+    </g>
+    <path d="M580 176H660" stroke="#6D3ED1" stroke-width="3" marker-end="url(#arrowPurple)"/>
+    <path d="M580 321C625 321 635 242 680 242" fill="none" stroke="#C47B18" stroke-width="2.5" stroke-dasharray="8 7" marker-end="url(#arrowAmber)"/>
+    <text x="605" y="306" fill="#9A651E" font-size="14">current runtime partly mock-backed</text>
+
+    <!-- Backend responsibilities -->
+    <path d="M855 280V316" stroke="#547EA8" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
+    <g transform="translate(655 330)">
+      <rect width="180" height="82" rx="16" fill="#FFFFFF" stroke="#9FB5CB" stroke-width="1.5"/>
+      <text x="90" y="33" text-anchor="middle" fill="#385A7D" font-size="16" font-weight="750">Identity &amp; projects</text>
+      <text x="90" y="59" text-anchor="middle" fill="#68798C" font-size="14">JWT · roles · ownership</text>
+      <rect x="200" width="180" height="82" rx="16" fill="#FFFFFF" stroke="#9FB5CB" stroke-width="1.5"/>
+      <text x="290" y="33" text-anchor="middle" fill="#385A7D" font-size="16" font-weight="750">Documents</text>
+      <text x="290" y="59" text-anchor="middle" fill="#68798C" font-size="14">Cloudinary · extraction</text>
+      <rect x="400" width="180" height="82" rx="16" fill="#FFFFFF" stroke="#9FB5CB" stroke-width="1.5"/>
+      <text x="490" y="33" text-anchor="middle" fill="#385A7D" font-size="16" font-weight="750">Meetings &amp; feedback</text>
+      <text x="490" y="59" text-anchor="middle" fill="#68798C" font-size="14">lifecycle · review</text>
+    </g>
+
+    <!-- Backend DB and worker -->
+    <g transform="translate(680 455)">
+      <rect width="350" height="92" rx="19" fill="#FFFFFF" stroke="#6F91B5" stroke-width="2"/>
+      <text x="175" y="36" text-anchor="middle" fill="#284A6F" font-size="19" font-weight="800">Backend PostgreSQL / Neon</text>
+      <text x="175" y="64" text-anchor="middle" fill="#61758A" font-size="14">projects · documents · AnalysisRun · AnalysisResult</text>
+    </g>
+    <path d="M855 412V443" stroke="#547EA8" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
+    <g transform="translate(680 585)">
+      <rect width="350" height="94" rx="19" fill="#EEF3FA" stroke="#6F91B5" stroke-width="2"/>
+      <text x="175" y="36" text-anchor="middle" fill="#284A6F" font-size="19" font-weight="800">Backend analysis worker</text>
+      <text x="175" y="64" text-anchor="middle" fill="#61758A" font-size="14">combine source text · submit · poll · persist result</text>
+    </g>
+    <path d="M855 547V573" stroke="#547EA8" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
+
+    <!-- FastAPI -->
+    <g transform="translate(290 580)">
+      <rect width="320" height="104" rx="20" fill="#F0EBFD" stroke="#8B6AE3" stroke-width="2.5"/>
+      <text x="160" y="38" text-anchor="middle" fill="#3B246D" font-size="20" font-weight="800">FastAPI AI service</text>
+      <text x="160" y="68" text-anchor="middle" fill="#665A76" font-size="14">compatibility API + protected internal jobs</text>
+      <text x="160" y="91" text-anchor="middle" fill="#665A76" font-size="14">validate · fingerprint · persist · dispatch</text>
+    </g>
+    <path d="M680 614H626" stroke="#6D3ED1" stroke-width="3" marker-end="url(#arrowPurple)"/>
+    <path d="M610 654H680" stroke="#6D3ED1" stroke-width="2.5" marker-end="url(#arrowPurple)"/>
+    <text x="623" y="599" fill="#5E4B78" font-size="14" text-anchor="middle">submit</text>
+    <text x="645" y="675" fill="#5E4B78" font-size="14" text-anchor="middle">poll result</text>
+
+    <!-- AI state and queue -->
+    <path d="M390 684V724" stroke="#6D3ED1" stroke-width="3" marker-end="url(#arrowPurple)"/>
+    <path d="M510 684V724" stroke="#6D3ED1" stroke-width="3" marker-end="url(#arrowPurple)"/>
+    <g transform="translate(130 738)">
+      <rect width="300" height="90" rx="18" fill="#FFFFFF" stroke="#A994DF" stroke-width="2"/>
+      <text x="150" y="35" text-anchor="middle" fill="#43316A" font-size="18" font-weight="800">AI PostgreSQL durable state</text>
+      <text x="150" y="63" text-anchor="middle" fill="#6C6179" font-size="14">jobs · attempts · events · results</text>
+    </g>
+    <g transform="translate(470 738)">
+      <rect width="250" height="90" rx="18" fill="#FFFFFF" stroke="#A994DF" stroke-width="2"/>
+      <text x="125" y="35" text-anchor="middle" fill="#43316A" font-size="18" font-weight="800">Redis / RQ</text>
+      <text x="125" y="63" text-anchor="middle" fill="#6C6179" font-size="14">dispatch · transient input</text>
+    </g>
+
+    <!-- AI worker / artifacts / providers -->
+    <path d="M595 828V855" stroke="#6D3ED1" stroke-width="3" marker-end="url(#arrowPurple)"/>
+    <g transform="translate(470 865)">
+      <rect width="250" height="72" rx="18" fill="#6D3ED1"/>
+      <text x="125" y="30" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="800">AI worker</text>
+      <text x="125" y="54" text-anchor="middle" fill="#EEE8FF" font-size="14">15-node LangGraph flow</text>
+    </g>
+    <path d="M470 901H405" stroke="#6D3ED1" stroke-width="3" marker-end="url(#arrowPurple)"/>
+    <g transform="translate(90 856)">
+      <rect width="300" height="82" rx="18" fill="#EAF7F2" stroke="#4A9B7D" stroke-width="2"/>
+      <text x="150" y="33" text-anchor="middle" fill="#1F6A51" font-size="18" font-weight="800">PostgreSQL / pgvector artifacts</text>
+      <text x="150" y="60" text-anchor="middle" fill="#4E7568" font-size="14">chunks · evidence · vectors · quality</text>
+    </g>
+    <path d="M720 901H785" stroke="#8791A2" stroke-width="2.5" stroke-dasharray="8 7" marker-end="url(#arrowGray)"/>
+    <g transform="translate(800 762)">
+      <rect width="220" height="48" rx="13" fill="#FFF8E8" stroke="#D6A64A"/>
+      <text x="110" y="30" text-anchor="middle" fill="#73551E" font-size="14" font-weight="700">Chat LLM · conditional</text>
+      <rect y="62" width="220" height="48" rx="13" fill="#FFF8E8" stroke="#D6A64A"/>
+      <text x="110" y="92" text-anchor="middle" fill="#73551E" font-size="14" font-weight="700">STT · conditional</text>
+      <rect y="124" width="220" height="48" rx="13" fill="#FFF8E8" stroke="#D6A64A"/>
+      <text x="110" y="154" text-anchor="middle" fill="#73551E" font-size="14" font-weight="700">Embeddings · conditional</text>
+    </g>
+
+    <!-- Optional paths -->
+    <path d="M330 176C250 360 245 520 290 632" fill="none" stroke="#8791A2" stroke-width="2.3" stroke-dasharray="8 7" marker-end="url(#arrowGray)"/>
+    <text x="135" y="505" fill="#70798A" font-size="14">explicit emergency browser → AI fallback</text>
+    <path d="M610 675C900 705 1160 700 1160 410C1160 300 1115 235 1030 220" fill="none" stroke="#8791A2" stroke-width="2.3" stroke-dasharray="8 7" marker-end="url(#arrowGray)"/>
+    <text x="1018" y="688" fill="#70798A" font-size="14">optional callback capability</text>
+
+    <!-- Legend -->
+    <g transform="translate(1060 745)">
+      <line x1="0" y1="0" x2="34" y2="0" stroke="#6D3ED1" stroke-width="3"/>
+      <text x="44" y="5" fill="#5F566A" font-size="14">integrated</text>
+      <line x1="0" y1="34" x2="34" y2="34" stroke="#C47B18" stroke-width="2.5" stroke-dasharray="8 7"/>
+      <text x="44" y="39" fill="#5F566A" font-size="14">partial integration</text>
+      <line x1="0" y1="68" x2="34" y2="68" stroke="#8791A2" stroke-width="2.5" stroke-dasharray="8 7"/>
+      <text x="44" y="73" fill="#5F566A" font-size="14">optional</text>
+    </g>
+  </g>
+</svg>
