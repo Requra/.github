@@ -1,0 +1,20 @@
+sequenceDiagram
+    participant F as Frontend
+    participant B as .NET backend
+    participant A as FastAPI AI API
+    participant D as Durable store
+    participant Q as Redis/RQ
+    participant W as Worker
+    F->>B: Start analysis
+    B->>A: POST /internal/jobs
+    A->>D: Validate fingerprint and persist
+    A->>Q: Queue work / cache transient input
+    A-->>B: 202 QUEUED or idempotent/conflict
+    Q->>W: Execute attempt
+    W->>W: Recover source and run 15-node graph
+    W->>D: Persist chunks, evidence, quality and result
+    W-->>B: Optional callback after persistence
+    B->>A: Poll status/result
+    A->>D: Read durable state
+    A-->>B: Status / JobResult
+    B-->>F: Normalized result and evidence
