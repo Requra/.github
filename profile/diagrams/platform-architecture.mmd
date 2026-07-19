@@ -1,0 +1,18 @@
+flowchart LR
+    U[BA / PM / Stakeholder] --> FE[React web application]
+    FE --> BE[External .NET backend]
+    BE --> AUTH[Auth and project ownership]
+    BE --> FILES[Backend-owned file storage]
+    BE --> MEET[Meetings and recordings]
+    BE --> AI[FastAPI internal AI API]
+    AI --> DB[(PostgreSQL durable job state)]
+    AI --> Q[Redis / RQ]
+    Q --> W[AI worker]
+    W --> G[15-node LangGraph pipeline]
+    G --> CHAT[Chat LLM providers]
+    G --> STT[Groq / Deepgram STT]
+    G --> EMB[OpenAI-compatible embeddings]
+    G --> ART[(PostgreSQL / pgvector artifacts)]
+    W -. optional best-effort callback .-> BE
+    FE -. explicit emergency fallback .-> AI
+    MOBILE[Future mobile client] -. planned / unpublished .-> BE

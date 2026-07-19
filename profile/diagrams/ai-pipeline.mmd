@@ -1,0 +1,18 @@
+flowchart LR
+    A[detect_file_type] --> B[ingest]
+    B -->|audio| C[transcribe]
+    B -->|document/text/transcript| D[parse_to_chunks]
+    C --> D
+    B -->|rejected/error| O[format]
+    D --> E[build_source_index]
+    E --> F[extract]
+    F --> G[dedupe_requirements]
+    G --> H[retrieve_evidence]
+    H --> I[classify]
+    I --> J[evidence_grounding]
+    J --> K[generate]
+    K --> L[quality_gate]
+    L -->|repairable and enabled| M[repair_stories]
+    M --> L
+    L --> N[summarize]
+    N --> O

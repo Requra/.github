@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+<title id="title">Requra.AI evidence-grounded requirements engineering</title>
+<desc id="desc">A visual flow from documents, meetings, transcripts, and audio through evidence-grounded intelligence into requirements, stories, acceptance criteria, and delivery exports.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FCFAFF"/><stop offset="1" stop-color="#F2EEFF"/></linearGradient>
+  <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6D3ED1"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#7C5CE6"/></marker>
+</defs>
+<rect width="1200" height="520" rx="28" fill="url(#bg)"/>
+<rect x="28" y="28" width="1144" height="464" rx="22" fill="#FFFFFF" stroke="#DED5F5" stroke-width="2"/>
+<g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif">
+  <g transform="translate(70 70)"><rect width="62" height="62" rx="18" fill="url(#brand)"/><path d="M17 18h23c10 0 16 5 16 13 0 6-3 10-9 12l10 14H43L34 45h-5v12H17V18zm12 10v9h10c3 0 5-2 5-5s-2-4-5-4H29z" fill="#FFF"/><circle cx="49" cy="14" r="5" fill="#BDF5E2"/></g>
+  <text x="150" y="102" fill="#24163E" font-size="43" font-weight="800">Requra.AI</text>
+  <text x="70" y="165" fill="#6D3ED1" font-size="19" font-weight="750" letter-spacing="2">EVIDENCE-GROUNDED REQUIREMENTS ENGINEERING</text>
+  <text x="70" y="218" fill="#24163E" font-size="36" font-weight="800">From scattered project context</text>
+  <text x="70" y="260" fill="#24163E" font-size="36" font-weight="800">to review-ready delivery artifacts.</text>
+  <text x="70" y="305" fill="#625874" font-size="19">Capture context. Retrieve evidence. Verify quotes. Align stakeholders.</text>
+  <g transform="translate(70 354)"><rect width="184" height="92" rx="18" fill="#F7F4FC" stroke="#D9D0EA"/><path d="M22 22h28l11 11v35H22zM50 22v13h11" fill="none" stroke="#6D3ED1" stroke-width="2.6" stroke-linejoin="round"/><text x="76" y="38" fill="#312447" font-size="17" font-weight="700">Documents</text><text x="76" y="63" fill="#70657F" font-size="15">PDF · DOCX · text</text></g>
+  <g transform="translate(272 354)"><rect width="184" height="92" rx="18" fill="#F7F4FC" stroke="#D9D0EA"/><path d="M29 46a11 11 0 0 0 22 0V34a11 11 0 0 0-22 0zm11 11v11m-15 0h30" fill="none" stroke="#6D3ED1" stroke-width="2.6" stroke-linecap="round"/><text x="76" y="38" fill="#312447" font-size="17" font-weight="700">Meetings</text><text x="76" y="63" fill="#70657F" font-size="15">audio · transcript</text></g>
+  <path d="M474 400H535" stroke="#7C5CE6" stroke-width="3" marker-end="url(#arrow)"/>
+  <g transform="translate(548 330)"><rect width="186" height="142" rx="28" fill="url(#brand)"/><circle cx="93" cy="47" r="22" fill="#FFF" fill-opacity=".16" stroke="#E9E2FF" stroke-width="2"/><circle cx="83" cy="42" r="4" fill="#FFF"/><circle cx="103" cy="42" r="4" fill="#FFF"/><path d="M81 57h24M93 25v-9M73 29l-8-8M113 29l8-8" stroke="#FFF" stroke-width="2.5" stroke-linecap="round"/><text x="93" y="93" text-anchor="middle" fill="#FFF" font-size="18" font-weight="800">Grounded intelligence</text><text x="93" y="118" text-anchor="middle" fill="#EFE9FF" font-size="14">retrieve · verify · score</text></g>
+  <path d="M749 400H808" stroke="#7C5CE6" stroke-width="3" marker-end="url(#arrow)"/>
+  <g transform="translate(824 330)"><rect width="306" height="142" rx="24" fill="#F7F4FC" stroke="#CFC2EF" stroke-width="2"/><g transform="translate(20 22)"><rect width="126" height="42" rx="12" fill="#ECE6FB"/><text x="63" y="27" text-anchor="middle" fill="#4B2D86" font-size="15" font-weight="700">Requirements</text><rect x="140" width="126" height="42" rx="12" fill="#E9F7F3"/><text x="203" y="27" text-anchor="middle" fill="#176B55" font-size="15" font-weight="700">Evidence</text><rect y="58" width="126" height="42" rx="12" fill="#ECE6FB"/><text x="63" y="85" text-anchor="middle" fill="#4B2D86" font-size="15" font-weight="700">User stories</text><rect x="140" y="58" width="126" height="42" rx="12" fill="#EEF3FA"/><text x="203" y="85" text-anchor="middle" fill="#365B82" font-size="15" font-weight="700">Exports</text></g></g>
+</g></svg>
