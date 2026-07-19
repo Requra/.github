@@ -1,21 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 470" role="img" aria-labelledby="title desc">
-<title id="title">Requra.AI source-to-story traceability chain</title>
-<desc id="desc">Source documents and meetings are split into page, speaker, or timestamp-aware chunks. Retrieved quotes are separately grounded, then attached to requirements, classification, user stories, acceptance criteria, and final coverage mappings.</desc>
-<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#6D3ED1"/></marker></defs>
-<rect width="1200" height="470" rx="28" fill="#FBFAFE"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 510" role="img" aria-labelledby="title desc">
+<title id="title">Requra requirement to story traceability</title>
+<defs>
+  <linearGradient id="trace-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F5F3FF"/><stop offset="1" stop-color="#F0ECFF"/></linearGradient>
+  <marker id="trace-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#6D3ED1"/></marker>
+</defs>
+<rect width="1200" height="510" fill="url(#trace-bg)"/>
 <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif">
-<text x="48" y="55" fill="#25183C" font-size="28" font-weight="800">Traceability from source to delivery</text>
-<text x="48" y="83" fill="#6F647C" font-size="16">Retrieval improves recall; grounding verifies that the final quote exists in the source.</text>
-<g transform="translate(40 124)">
-<g><rect width="220" height="92" rx="18" fill="#F0EBFD" stroke="#8B6AE3" stroke-width="2"/><text x="110" y="35" text-anchor="middle" fill="#3B246D" font-size="16" font-weight="800">Source</text><text x="110" y="61" text-anchor="middle" fill="#6D6479" font-size="14">document · meeting</text></g>
-<g transform="translate(260)"><rect width="220" height="92" rx="18" fill="#FFFFFF" stroke="#A994DF" stroke-width="2"/><text x="110" y="35" text-anchor="middle" fill="#43316A" font-size="16" font-weight="800">Provenance-aware chunk</text><text x="110" y="61" text-anchor="middle" fill="#6D6479" font-size="14">page · speaker · timestamp</text></g>
-<g transform="translate(520)"><rect width="220" height="92" rx="18" fill="#EAF7F2" stroke="#5FA98D" stroke-width="2"/><text x="110" y="35" text-anchor="middle" fill="#236A53" font-size="16" font-weight="800">Grounded evidence</text><text x="110" y="61" text-anchor="middle" fill="#6D6479" font-size="14">verified verbatim quote</text></g>
-<g transform="translate(780)"><rect width="170" height="92" rx="18" fill="#F0EBFD" stroke="#8B6AE3" stroke-width="2"/><text x="85" y="35" text-anchor="middle" fill="#3B246D" font-size="16" font-weight="800">Requirement</text><text x="85" y="61" text-anchor="middle" fill="#6D6479" font-size="14">type · confidence</text></g>
-<g transform="translate(990)"><rect width="170" height="92" rx="18" fill="#F0EBFD" stroke="#8B6AE3" stroke-width="2"/><text x="85" y="35" text-anchor="middle" fill="#3B246D" font-size="16" font-weight="800">User story</text><text x="85" y="61" text-anchor="middle" fill="#6D6479" font-size="14">coverage mapping</text></g>
-<g transform="translate(160 170)"><rect width="220" height="92" rx="18" fill="#FFFFFF" stroke="#A994DF" stroke-width="2"/><text x="110" y="35" text-anchor="middle" fill="#43316A" font-size="16" font-weight="800">Acceptance criteria</text><text x="110" y="61" text-anchor="middle" fill="#6D6479" font-size="14">testable conditions</text></g>
-<g transform="translate(480 170)"><rect width="240" height="92" rx="18" fill="#EEF3FA" stroke="#6F91B5" stroke-width="2"/><text x="120" y="35" text-anchor="middle" fill="#284A6F" font-size="16" font-weight="800">Final source reference</text><text x="120" y="61" text-anchor="middle" fill="#6D6479" font-size="14">document + chunk + quote</text></g>
-<g transform="translate(820 170)"><rect width="260" height="92" rx="18" fill="#EAF7F2" stroke="#5FA98D" stroke-width="2"/><text x="130" y="35" text-anchor="middle" fill="#236A53" font-size="16" font-weight="800">Quality &amp; coverage</text><text x="130" y="61" text-anchor="middle" fill="#6D6479" font-size="14">groundedness · completeness</text></g>
-<path d="M220 46H250" stroke="#6D3ED1" stroke-width="2.5" marker-end="url(#a)"/><path d="M480 46H510" stroke="#6D3ED1" stroke-width="2.5" marker-end="url(#a)"/><path d="M740 46H770" stroke="#6D3ED1" stroke-width="2.5" marker-end="url(#a)"/><path d="M950 46H980" stroke="#6D3ED1" stroke-width="2.5" marker-end="url(#a)"/><path d="M1075 92V145C1075 160 270 160 270 170" fill="none" stroke="#6D3ED1" stroke-width="2.5" marker-end="url(#a)"/><path d="M380 216H470" stroke="#6D3ED1" stroke-width="2.5" marker-end="url(#a)"/><path d="M720 216H810" stroke="#6D3ED1" stroke-width="2.5" marker-end="url(#a)"/>
+  <g transform="translate(80 60)"><rect width="140" height="80" rx="14" fill="#FFF4ED" stroke="#FB923C" stroke-width="2.5"/><text x="70" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="#92400E">Source</text><text x="70" y="50" text-anchor="middle" font-size="12" fill="#B45309">Doc / Meeting</text><text x="70" y="68" text-anchor="middle" font-size="11" fill="#D97706">transcript</text></g>
+  <path d="M230 100H300" stroke="#6D3ED1" stroke-width="2.5" marker-end="url(#trace-arr)"/>
+  <g transform="translate(310 60)"><rect width="140" height="80" rx="14" fill="#EDE9FE" stroke="#A78BFA" stroke-width="2.5"/><text x="70" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="#6B21A8">Provenance</text><text x="70" y="50" text-anchor="middle" font-size="12" fill="#7C3AED">aware</text><text x="70" y="68" text-anchor="middle" font-size="12" fill="#7C3AED">chunks</text></g>
+  <path d="M460 100H530" stroke="#6D3ED1" stroke-width="2.5" marker-end="url(#trace-arr)"/>
+  <g transform="translate(540 60)"><rect width="140" height="80" rx="14" fill="#D1FAE5" stroke="#6EE7B7" stroke-width="2.5"/><text x="70" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="#065F46">Grounded</text><text x="70" y="50" text-anchor="middle" font-size="12" fill="#10B981">evidence</text><text x="70" y="68" text-anchor="middle" font-size="11" fill="#059669">(scored)</text></g>
+  <path d="M690 100H760" stroke="#6D3ED1" stroke-width="2.5" marker-end="url(#trace-arr)"/>
+  <g transform="translate(770 60)"><rect width="140" height="80" rx="14" fill="#E0E7FF" stroke="#818CF8" stroke-width="2.5"/><text x="70" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="#3730A3">Requirement</text><text x="70" y="50" text-anchor="middle" font-size="12" fill="#4F46E5">defined by</text><text x="70" y="68" text-anchor="middle" font-size="11" fill="#4F46E5">evidence</text></g>
+  <path d="M920 100H990" stroke="#6D3ED1" stroke-width="2.5" marker-end="url(#trace-arr)"/>
+  <g transform="translate(1000 60)"><rect width="140" height="80" rx="14" fill="#FCE7F3" stroke="#F472B6" stroke-width="2.5"/><text x="70" y="30" text-anchor="middle" font-size="13" font-weight="700" fill="#831843">User</text><text x="70" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="#BE185D">story</text><text x="70" y="68" text-anchor="middle" font-size="11" fill="#BE185D">& AC</text></g>
+  <path d="M150 140L150 200" stroke="#C084FC" stroke-width="2" marker-end="url(#trace-arr)"/>
+  <g transform="translate(80 210)"><rect width="140" height="70" rx="12" fill="#F3E8FF" stroke="#D8B4FE" stroke-width="2"/><text x="70" y="28" text-anchor="middle" font-size="12" font-weight="700" fill="#7C3AED">Acceptance</text><text x="70" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#7C3AED">criteria</text></g>
+  <path d="M610 140L610 200" stroke="#C084FC" stroke-width="2" marker-end="url(#trace-arr)"/>
+  <g transform="translate(540 210)"><rect width="140" height="70" rx="12" fill="#F3E8FF" stroke="#D8B4FE" stroke-width="2"/><text x="70" y="28" text-anchor="middle" font-size="12" font-weight="700" fill="#7C3AED">Final source</text><text x="70" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#7C3AED">reference</text></g>
+  <path d="M1070 140L1070 200" stroke="#C084FC" stroke-width="2" marker-end="url(#trace-arr)"/>
+  <g transform="translate(1000 210)"><rect width="140" height="70" rx="12" fill="#F3E8FF" stroke="#D8B4FE" stroke-width="2"/><text x="70" y="28" text-anchor="middle" font-size="12" font-weight="700" fill="#7C3AED">Quality &</text><text x="70" y="46" text-anchor="middle" font-size="12" font-weight="700" fill="#7C3AED">coverage</text></g>
+  <rect x="200" y="370" width="800" height="110" rx="14" fill="#F0F9FF" stroke="#0EA5E9" stroke-width="2.5"/>
+  <text x="600" y="405" text-anchor="middle" font-size="14" font-weight="700" fill="#0369A1">Each final story preserves the</text>
+  <text x="600" y="428" text-anchor="middle" font-size="14" font-weight="700" fill="#0369A1">requirement AND source evidence</text>
+  <text x="600" y="451" text-anchor="middle" font-size="14" font-weight="700" fill="#0369A1">that justify it</text>
 </g>
-<g transform="translate(48 414)"><circle cx="8" cy="8" r="8" fill="#5FA98D"/><text x="28" y="13" fill="#5F566A" font-size="14">Each final story can preserve the requirement and source evidence that justify it.</text></g>
-</g></svg>
+</svg>
