@@ -1,24 +1,83 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-labelledby="title desc">
 <title id="title">Requra.AI evidence-grounded requirements engineering</title>
-<desc id="desc">A visual flow from documents, meetings, transcripts, and audio through evidence-grounded intelligence into requirements, stories, acceptance criteria, and delivery exports.</desc>
+<desc id="desc">Requra.AI transforms documents, meeting audio, notes, and transcripts into evidence-grounded requirements, user stories, acceptance criteria, summaries, and exports.</desc>
 <defs>
   <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0F0B18"/><stop offset="1" stop-color="#171126"/></linearGradient>
   <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6D3ED1"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient>
-  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#7C5CE6"/></marker>
+  <linearGradient id="core" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6D3ED1"/><stop offset="1" stop-color="#9A6BFF"/></linearGradient>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#9A7BF2"/></marker>
+  <style>
+    .flow{stroke-dasharray:9 9;animation:flow 8s linear infinite}
+    .glow{animation:glow 3.4s ease-in-out infinite}
+    @keyframes flow{to{stroke-dashoffset:-72}}
+    @keyframes glow{0%,100%{opacity:.18}50%{opacity:.42}}
+    @media (prefers-reduced-motion:reduce){.flow,.glow{animation:none}}
+  </style>
 </defs>
-<rect width="1200" height="520" rx="28" fill="url(#bg)"/>
-<rect x="28" y="28" width="1144" height="464" rx="22" fill="#151020" stroke="#3D3154" stroke-width="2"/>
+<rect width="1200" height="560" rx="30" fill="url(#bg)"/>
+<rect x="28" y="28" width="1144" height="504" rx="24" fill="#151020" stroke="#3D3154" stroke-width="2"/>
 <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif">
-  <g transform="translate(70 70)"><rect width="62" height="62" rx="18" fill="url(#brand)"/><path d="M17 18h23c10 0 16 5 16 13 0 6-3 10-9 12l10 14H43L34 45h-5v12H17V18zm12 10v9h10c3 0 5-2 5-5s-2-4-5-4H29z" fill="#FFF"/><circle cx="49" cy="14" r="5" fill="#BDF5E2"/></g>
-  <text x="150" y="102" fill="#F5F1FF" font-size="43" font-weight="800">Requra.AI</text>
-  <text x="70" y="165" fill="#6D3ED1" font-size="19" font-weight="750" letter-spacing="2">EVIDENCE-GROUNDED REQUIREMENTS ENGINEERING</text>
-  <text x="70" y="218" fill="#F5F1FF" font-size="36" font-weight="800">From scattered project context</text>
-  <text x="70" y="260" fill="#F5F1FF" font-size="36" font-weight="800">to review-ready delivery artifacts.</text>
-  <text x="70" y="305" fill="#B9AFC8" font-size="19">Capture context. Retrieve evidence. Verify quotes. Align stakeholders.</text>
-  <g transform="translate(70 354)"><rect width="184" height="92" rx="18" fill="#21192E" stroke="#453858"/><path d="M22 22h28l11 11v35H22zM50 22v13h11" fill="none" stroke="#6D3ED1" stroke-width="2.6" stroke-linejoin="round"/><text x="76" y="38" fill="#F1EBFA" font-size="17" font-weight="700">Documents</text><text x="76" y="63" fill="#B8AEC5" font-size="15">PDF · DOCX · text</text></g>
-  <g transform="translate(272 354)"><rect width="184" height="92" rx="18" fill="#21192E" stroke="#453858"/><path d="M29 46a11 11 0 0 0 22 0V34a11 11 0 0 0-22 0zm11 11v11m-15 0h30" fill="none" stroke="#6D3ED1" stroke-width="2.6" stroke-linecap="round"/><text x="76" y="38" fill="#F1EBFA" font-size="17" font-weight="700">Meetings</text><text x="76" y="63" fill="#B8AEC5" font-size="15">audio · transcript</text></g>
-  <path d="M474 400H535" stroke="#7C5CE6" stroke-width="3" marker-end="url(#arrow)"/>
-  <g transform="translate(548 330)"><rect width="186" height="142" rx="28" fill="url(#brand)"/><circle cx="93" cy="47" r="22" fill="#FFF" fill-opacity=".16" stroke="#E9E2FF" stroke-width="2"/><circle cx="83" cy="42" r="4" fill="#FFF"/><circle cx="103" cy="42" r="4" fill="#FFF"/><path d="M81 57h24M93 25v-9M73 29l-8-8M113 29l8-8" stroke="#FFF" stroke-width="2.5" stroke-linecap="round"/><text x="93" y="93" text-anchor="middle" fill="#FFF" font-size="18" font-weight="800">Grounded intelligence</text><text x="93" y="118" text-anchor="middle" fill="#EFE9FF" font-size="14">retrieve · verify · score</text></g>
-  <path d="M749 400H808" stroke="#7C5CE6" stroke-width="3" marker-end="url(#arrow)"/>
-  <g transform="translate(824 330)"><rect width="306" height="142" rx="24" fill="#21192E" stroke="#54426D" stroke-width="2"/><g transform="translate(20 22)"><rect width="126" height="42" rx="12" fill="#302243"/><text x="63" y="27" text-anchor="middle" fill="#D8C9FF" font-size="15" font-weight="700">Requirements</text><rect x="140" width="126" height="42" rx="12" fill="#183A32"/><text x="203" y="27" text-anchor="middle" fill="#9DE7D2" font-size="15" font-weight="700">Evidence</text><rect y="58" width="126" height="42" rx="12" fill="#302243"/><text x="63" y="85" text-anchor="middle" fill="#D8C9FF" font-size="15" font-weight="700">User stories</text><rect x="140" y="58" width="126" height="42" rx="12" fill="#1E2E43"/><text x="203" y="85" text-anchor="middle" fill="#AFCDEF" font-size="15" font-weight="700">Exports</text></g></g>
-</g></svg>
+  <!-- Official Requra robot mark extracted from the product design. -->
+  <rect x="70" y="56" width="78" height="68" rx="20" fill="#2A2038" stroke="#514268"/>
+  <image x="81" y="67" width="56" height="47" href="data:image/png;base64,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" preserveAspectRatio="xMidYMid meet"/>
+  <text x="166" y="88" fill="#F5F1FF" font-size="43" font-weight="800">Requra.AI</text>
+  <text x="167" y="116" fill="#7C5CE6" font-size="14" font-weight="750" letter-spacing="1.7">REQUIREMENTS INTELLIGENCE</text>
+
+  <text x="70" y="184" fill="#F5F1FF" font-size="38" font-weight="800">From scattered project context</text>
+  <text x="70" y="228" fill="#F5F1FF" font-size="38" font-weight="800">to traceable, review-ready delivery.</text>
+  <text x="70" y="274" fill="#B9AFC8" font-size="18">Capture the source. Retrieve the evidence. Verify every quote.</text>
+  <text x="70" y="302" fill="#B9AFC8" font-size="18">Align stakeholders around requirements that stay connected to their origin.</text>
+
+  <!-- Decorative traceability constellation; isolated from content bounds. -->
+  <g opacity=".72">
+    <path d="M964 88L1028 64L1098 104L1048 154L972 142Z" fill="none" stroke="#514268" stroke-width="2"/>
+    <circle cx="964" cy="88" r="6" fill="#7C5CE6"/><circle cx="1028" cy="64" r="5" fill="#B89BFA"/><circle cx="1098" cy="104" r="7" fill="#7C5CE6"/><circle cx="1048" cy="154" r="5" fill="#55C7A4"/><circle cx="972" cy="142" r="4" fill="#78A9DB"/>
+  </g>
+
+  <!-- Input card -->
+  <rect x="70" y="360" width="296" height="148" rx="22" fill="#3F236F" opacity=".07"/>
+  <rect x="70" y="356" width="296" height="148" rx="22" fill="#21192E" stroke="#514268" stroke-width="1.5"/>
+  <circle cx="104" cy="390" r="18" fill="#302243"/>
+  <path d="M96 380h13l6 6v14H96zM109 380v7h6" fill="none" stroke="#D8C9FF" stroke-width="2" stroke-linejoin="round"/>
+  <text x="134" y="386" fill="#F5F1FF" font-size="19" font-weight="750">Scattered context</text>
+  <text x="134" y="410" fill="#B9AFC8" font-size="14.5">Documents · notes · transcripts</text>
+  <text x="94" y="444" fill="#B9AFC8" font-size="14.5">Meeting audio · stakeholder input</text>
+  <g font-size="12.5" font-weight="700">
+    <rect x="94" y="463" width="72" height="25" rx="9" fill="#302243"/><text x="130" y="480" text-anchor="middle" fill="#D8C9FF">PDF/DOCX</text>
+    <rect x="174" y="463" width="60" height="25" rx="9" fill="#183A32"/><text x="204" y="480" text-anchor="middle" fill="#9DE7D2">Audio</text>
+    <rect x="242" y="463" width="70" height="25" rx="9" fill="#1E2E43"/><text x="277" y="480" text-anchor="middle" fill="#AFCDEF">Meetings</text>
+  </g>
+
+  <!-- Safe animated connector: only stroke offset changes, never group position. -->
+  <path class="flow" d="M382 430H438" fill="none" stroke="#9A7BF2" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+
+  <!-- Grounding core -->
+  <circle class="glow" cx="600" cy="428" r="100" fill="#8B5CF6" opacity=".18"/>
+  <rect x="452" y="342" width="296" height="184" rx="28" fill="#3F236F" opacity=".10"/>
+  <rect x="452" y="338" width="296" height="184" rx="28" fill="url(#core)"/>
+  <circle cx="486" cy="374" r="18" fill="#FFFFFF" fill-opacity=".16" stroke="#E9E2FF" stroke-opacity=".75"/>
+  <path d="M477 375l6 6 12-14" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="516" y="372" fill="#FFFFFF" font-size="17" font-weight="800">Evidence-grounded AI</text>
+  <text x="476" y="410" fill="#F3EEFF" font-size="14.5">01 · Retrieve source support</text>
+  <text x="476" y="439" fill="#F3EEFF" font-size="14.5">02 · Verify quotes against chunks</text>
+  <text x="476" y="468" fill="#F3EEFF" font-size="14.5">03 · Score coverage and quality</text>
+  <rect x="476" y="486" width="248" height="24" rx="9" fill="#FFFFFF" fill-opacity=".14"/>
+  <text x="600" y="503" text-anchor="middle" fill="#FFFFFF" font-size="11.8" font-weight="750">TRACEABILITY PRESERVED END TO END</text>
+
+  <path class="flow" d="M762 430H818" fill="none" stroke="#9A7BF2" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+
+  <!-- Output card -->
+  <rect x="834" y="360" width="296" height="148" rx="22" fill="#3F236F" opacity=".07"/>
+  <rect x="834" y="356" width="296" height="148" rx="22" fill="#21192E" stroke="#514268" stroke-width="1.5"/>
+  <circle cx="868" cy="390" r="18" fill="#302243"/>
+  <path d="M859 383h18M859 390h18M859 397h12" fill="none" stroke="#D8C9FF" stroke-width="2" stroke-linecap="round"/>
+  <text x="898" y="386" fill="#F5F1FF" font-size="19" font-weight="750">Review-ready artifacts</text>
+  <text x="898" y="410" fill="#B9AFC8" font-size="14.5">Requirements · stories · criteria</text>
+  <text x="858" y="444" fill="#B9AFC8" font-size="14.5">Summaries · evidence · quality findings</text>
+  <g font-size="12.5" font-weight="700">
+    <rect x="858" y="463" width="82" height="25" rx="9" fill="#302243"/><text x="899" y="480" text-anchor="middle" fill="#D8C9FF">User stories</text>
+    <rect x="948" y="463" width="76" height="25" rx="9" fill="#183A32"/><text x="986" y="480" text-anchor="middle" fill="#9DE7D2">Evidence</text>
+    <rect x="1032" y="463" width="72" height="25" rx="9" fill="#1E2E43"/><text x="1068" y="480" text-anchor="middle" fill="#AFCDEF">Exports</text>
+  </g>
+</g>
+</svg>
