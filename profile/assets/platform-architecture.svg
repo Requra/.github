@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 960" role="img" aria-labelledby="title desc">
   <title id="title">Requra.AI end-to-end platform architecture</title>
-  <desc id="desc">Verified React, ASP.NET Core, Flutter, and FastAPI repositories. Web traffic follows the integrated backend path. The implemented Flutter client is partly mock-backed while production integration is completed. The backend persists application state and orchestrates durable AI jobs executed by Redis RQ workers and a fifteen-node LangGraph pipeline.</desc>
+  <desc id="desc">Verified React, ASP.NET Core, Flutter, and FastAPI repositories. Web traffic follows the integrated backend path. The implemented Flutter client is partly mock-backed while production integration is completed. The backend persists application state and orchestrates durable AI jobs executed by Redis RQ workers and a thirteen-node LangGraph pipeline.</desc>
   <defs>
     <marker id="arrowPurple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#6D3ED1"/></marker>
     <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#547EA8"/></marker>
@@ -109,7 +109,7 @@
     <g transform="translate(470 865)">
       <rect width="250" height="72" rx="18" fill="#6D3ED1"/>
       <text x="125" y="30" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="800">AI worker</text>
-      <text x="125" y="54" text-anchor="middle" fill="#EEE8FF" font-size="14">15-node LangGraph flow</text>
+      <text x="125" y="54" text-anchor="middle" fill="#EEE8FF" font-size="14">13-node LangGraph flow</text>
     </g>
     <path d="M470 901H405" stroke="#6D3ED1" stroke-width="3" marker-end="url(#arrowPurple)"/>
     <g transform="translate(90 856)">

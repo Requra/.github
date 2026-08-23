@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1040" role="img" aria-labelledby="title desc">
   <title id="title">Requra.AI current asynchronous analysis lifecycle</title>
-  <desc id="desc">A web or mobile client starts a project-scoped analysis run. The ASP.NET Core backend validates and persists an AnalysisRun, starts its current analysis worker, combines backend-owned document text, submits through the FastAPI process-json compatibility endpoint, and polls AI status. The AI service fingerprints and persists a durable job, dispatches worker execution, and stores the final result. The backend persists AnalysisResult and returns run status and dashboard data to the client.</desc>
+  <desc id="desc">A web or mobile client starts a project-scoped analysis run. The ASP.NET Core backend validates and persists an AnalysisRun, starts its current analysis worker, combines backend-owned document text, submits through the FastAPI protected internal compatibility endpoint, and polls the authenticated internal job status and result endpoints. The AI service fingerprints and persists a durable job, dispatches worker execution, and stores the final result. The backend persists AnalysisResult and returns run status and dashboard data to the client.</desc>
   <defs>
     <marker id="p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#6D3ED1"/></marker>
     <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#547EA8"/></marker>
@@ -50,7 +50,7 @@
         <text x="86" y="53" text-anchor="middle" fill="#63778D" font-size="14">combine document text</text>
       </g>
 
-      <text x="810" y="555" text-anchor="middle">5 · POST /process-json</text>
+      <text x="810" y="555" text-anchor="middle">5 · POST /internal/process (Bearer token)</text>
       <line x1="710" y1="566" x2="900" y2="566" stroke="#6D3ED1" stroke-width="2.8" marker-end="url(#p)"/>
 
       <text x="1010" y="620" text-anchor="middle">6 · validate + fingerprint + persist + dispatch</text>
@@ -66,10 +66,10 @@
         <text x="92" y="76" text-anchor="middle" fill="#6C6179" font-size="14">stories · quality · summary</text>
       </g>
 
-      <text x="815" y="855" text-anchor="middle">9 · poll GET /status/{jobId}</text>
-      <line x1="710" y1="866" x2="900" y2="866" stroke="#6D3ED1" stroke-width="2.8" marker-end="url(#p)"/>
+      <text x="815" y="850" text-anchor="middle">9 · poll GET /internal/jobs/{jobId}</text>
+      <line x1="710" y1="861" x2="900" y2="861" stroke="#6D3ED1" stroke-width="2.8" marker-end="url(#p)"/>
 
-      <text x="810" y="907" text-anchor="middle">10 · terminal status + result</text>
+      <text x="810" y="907" text-anchor="middle">10 · GET .../result → terminal payload</text>
       <line x1="900" y1="918" x2="720" y2="918" stroke="#6D3ED1" stroke-width="2.6" marker-end="url(#p)"/>
     </g>
 

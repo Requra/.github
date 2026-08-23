@@ -12,14 +12,16 @@ sequenceDiagram
     D-->>B: QUEUED run state
     B->>W: Start current processing task
     W->>W: Recover and combine backend-owned document text
-    W->>A: POST /process-json
+    W->>A: POST /internal/process (Bearer token)
     A->>Q: Validate, fingerprint, persist and dispatch
     Q->>G: Execute attempt
-    G->>G: Run 15-node graph and persist terminal result
+    G->>G: Run 13-node graph and persist terminal result
     loop Authoritative backend polling
-        W->>A: GET /status/{jobId}
-        A-->>W: Status, progress and result
+        W->>A: GET /internal/jobs/{jobId}
+        A-->>W: Status and progress
     end
+    W->>A: GET /internal/jobs/{jobId}/result
+    A-->>W: Terminal JobResult payload
     W->>D: Persist AnalysisResult.RawJson and terminal state
     C->>B: Poll run status / request results dashboard
     B->>D: Read project-scoped run and result

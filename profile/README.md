@@ -21,6 +21,14 @@
   <a href="https://www.figma.com/design/t3LvbLJ0QiAynzr6mxsifi/UI-Shared?node-id=0-1&t=3JyWES2RjWpm9pKi-1"><strong>Figma Product Design</strong></a>
 </p>
 
+## Featured launch film
+
+<a href="https://github.com/Requra/.github/releases/download/launch-film/requra-flagship-demo-1080p.mp4">
+  <img src="./assets/requra-launch-demo-cover.webp" alt="Watch the Requra.AI product demo — a mixed PDF, DOCX, TXT, and MP3 project moving through AI analysis, evidence-grounded requirements, stakeholder review, and a ClickUp delivery export." width="100%">
+</a>
+
+<p align="center"><sub>104 seconds · real product UI, real mixed-source project · <a href="https://github.com/Requra/.github/releases/tag/launch-film">also available in 4K</a></sub></p>
+
 ## What Requra.AI does
 
 Requra.AI turns fragmented project knowledge—documents, notes, transcripts, meeting audio, and stakeholder context—into structured requirements, user stories, acceptance criteria, executive summaries, evidence, quality findings, and delivery-ready export data.
@@ -59,7 +67,7 @@ Unlike a generic LLM wrapper, the AI workflow retrieves source support and then 
 - User stories and criteria
 - Executive summaries
 - Source references and coverage
-- Jira-compatible and spreadsheet-ready rows
+- ClickUp tasks, Jira-compatible rows, and spreadsheet exports
 
 </td>
 </tr>
@@ -75,7 +83,7 @@ Unlike a generic LLM wrapper, the AI workflow retrieves source support and then 
 | **Stakeholder review** | Invite reviewers, collect feedback, and track resolution state. |
 | **Meeting workflows** | Schedule, invite, manage lifecycle and consent, orchestrate recording, and review meeting context. |
 | **Mobile companion** | Flutter experience for authentication, projects, results, evidence, meetings, and profile workflows; production backend integration is still in progress. |
-| **Delivery exports** | Produce browser-generated CSV and Jira-compatible structures; direct remote issue creation is not implemented. |
+| **Delivery exports** | Push approved stories directly into a connected ClickUp list (creates real tasks), plus browser-generated CSV and Jira-compatible structures. Per-item advanced ClickUp sync actions remain feature-flagged off pending backend endpoints. |
 
 > The recruiter demo is an explicit synthetic runtime. The current Flutter runtime is also partly mock-backed; neither should be presented as the deployed production integration.
 
@@ -95,34 +103,33 @@ Editable source: [`profile/diagrams/platform-architecture.mmd`](./diagrams/platf
 
 ## Asynchronous analysis lifecycle
 
-<img src="./assets/analysis-sequence.svg" alt="Current Requra.AI analysis sequence showing clients starting a project run, the ASP.NET Core backend persisting an AnalysisRun, combining document text, submitting to the FastAPI compatibility endpoint, polling AI status, persisting the result, and returning normalized data." width="100%">
+<img src="./assets/analysis-sequence.svg" alt="Current Requra.AI analysis sequence showing clients starting a project run, the ASP.NET Core backend persisting an AnalysisRun, combining document text, submitting through the FastAPI protected internal endpoint, polling the authenticated internal job status and result endpoints, persisting the result, and returning normalized data." width="100%">
 
 1. The web client starts analysis through `POST /api/projects/{projectId}/ai/runs`.
 2. The backend validates project and document ownership, then persists an `AnalysisRun` in `QUEUED` state.
 3. The current backend worker combines text from backend-owned project documents.
-4. It submits the compatibility request through `POST /process-json`.
+4. It submits the protected internal request through `POST /internal/process` (bearer-token authenticated).
 5. The AI service validates and fingerprints the request, persists durable job state, and dispatches configured worker execution.
-6. The AI worker runs the 15-node graph and persists evidence, quality data, and the terminal result.
-7. The backend polls `GET /status/{jobId}` and stores `AnalysisResult.RawJson` plus the terminal run state.
+6. The AI worker runs the 13-node graph and persists evidence, quality data, and the terminal result.
+7. The backend polls `GET /internal/jobs/{jobId}` for status, then reads `GET /internal/jobs/{jobId}/result` and stores `AnalysisResult.RawJson` plus the terminal run state.
 8. Clients read run status and the project results dashboard from the backend.
 
-**Polling is the currently implemented backend integration. Protected internal jobs remain the production-oriented AI contract; callbacks are optional AI-service capability, not the current backend completion path.**
+**Polling is the currently implemented backend integration.** Submission uses the protected internal compatibility endpoint; status and result reads use the authenticated `/internal/jobs` production endpoints. Callbacks are an optional AI-service capability, not the current backend completion path.
 
 Editable source: [`profile/diagrams/analysis-sequence.mmd`](./diagrams/analysis-sequence.mmd)
 
 ## AI intelligence pipeline
 
-<img src="./assets/ai-pipeline.svg" alt="Fifteen-node Requra.AI LangGraph workflow with audio routing through transcription, document and text routing through chunking, rejection short circuit, retrieval and grounding, generation, quality validation, bounded repair, summary, and formatting." width="100%">
+<img src="./assets/ai-pipeline.svg" alt="Thirteen-node Requra.AI LangGraph workflow with unified source preparation for documents, transcripts, and audio, a rejection short circuit, retrieval and grounding, generation, quality validation, bounded repair, summary, and formatting." width="100%">
 
-The current graph contains 15 nodes:
+The current graph contains 13 nodes:
 
-`detect_file_type` → `ingest` → `transcribe` when audio → `parse_to_chunks` → `build_source_index` → `extract` → `dedupe_requirements` → `retrieve_evidence` → `classify` → `evidence_grounding` → `generate` → `quality_gate` → `repair_stories` when eligible → `summarize` → `format`
+`detect_file_type` → `prepare_sources` → `build_source_index` → `extract` → `dedupe_requirements` → `retrieve_evidence` → `classify` → `evidence_grounding` → `generate` → `quality_gate` → `repair_stories` when eligible and enabled → `summarize` → `format`
 
 Key implementation characteristics:
 
-- PDF, DOCX, text, and backend transcripts converge on the same graph.
-- Accepted audio routes through configured Groq or Deepgram speech-to-text.
-- Rejected or failed input short-circuits to formatting.
+- PDF, DOCX, text, and backend transcripts converge on the same graph; `prepare_sources` fans out over heterogeneous documents and audio concurrently, transcribes accepted audio through configured Groq or Deepgram speech-to-text, masks detected PII, and merges everything into one chunk corpus before it reaches the graph's shared stages.
+- Rejected, errored, or empty input short-circuits straight from `prepare_sources` to `format`.
 - BM25 is the deterministic primary retriever; pgvector-backed hybrid retrieval is optional.
 - Evidence grounding verifies that attached quotes occur in source chunks.
 - The only loop is the bounded `quality_gate → repair_stories → quality_gate` cycle.
@@ -146,6 +153,11 @@ Editable source: [`profile/diagrams/ai-pipeline.mmd`](./diagrams/ai-pipeline.mmd
 <p align="center">
   <img src="https://raw.githubusercontent.com/Requra/frontend/main/docs/readme/screenshots/ai-results.png" alt="Requra.AI analysis results with requirements, stories, summaries, and quality metrics." width="49%">
   <img src="https://raw.githubusercontent.com/Requra/frontend/main/docs/readme/screenshots/evidence.png" alt="Requra.AI evidence view connecting generated artifacts to source references." width="49%">
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Requra/frontend/main/docs/readme/screenshots/review-queue.png" alt="Requra.AI review queue with approval decisions, risks, open questions, and action items." width="49%">
+  <img src="https://raw.githubusercontent.com/Requra/frontend/main/docs/readme/screenshots/export.png" alt="Requra.AI export tab with a Jira-ready CSV download and a ClickUp push that creates real tasks." width="49%">
 </p>
 
 The gallery reuses current privacy-safe frontend showcase assets. Open the [interactive demo](https://requra-demo-rust.vercel.app/demo) for the complete synthetic recruiter workspace.
@@ -217,8 +229,9 @@ Owns durable asynchronous AI jobs, source preparation, requirement intelligence,
 | Requirement-to-story traceability and coverage | ✅ Implemented | Source references and coverage mappings are in the result contract. |
 | Story quality scoring and bounded repair | ⚙️ Conditional | Quality scoring is implemented; repair is configuration-controlled. |
 | Stakeholder feedback workflows | ✅ Implemented | Backend endpoints and current client surfaces exist. |
+| Direct remote ClickUp task creation | ✅ Implemented | OAuth connect and "push approved stories" create real tasks in a configured ClickUp list (`POST /api/ClickUp/push/{projectId}/approved`); per-item advanced sync actions are implemented but feature-flagged off in the frontend pending backend endpoints. |
 | Recruiter demo | 🧪 Demo / simulated | Synthetic deterministic workspace; meeting media and transcription are simulated. |
-| Direct remote Jira or Azure DevOps creation | 🛣️ Planned / incomplete | Current outputs are import-compatible structures only. |
+| Direct remote Jira or Azure DevOps creation | 🛣️ Planned / incomplete | Current outputs are import-compatible CSV/JSON structures only; ClickUp is the one integration with direct remote task creation today. |
 | Real-time meeting AI suggestions | 🛣️ Planned / incomplete | Post-meeting and real-time analysis must not be conflated. |
 | Mobile public-store release | 🔍 Unverified | No public App Store or Google Play release is claimed here. |
 

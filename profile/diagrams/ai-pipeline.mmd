@@ -1,18 +1,15 @@
 flowchart LR
-    A[detect_file_type] --> B[ingest]
-    B -->|audio| C[transcribe]
-    B -->|document/text/transcript| D[parse_to_chunks]
-    C --> D
-    B -->|rejected/error| O[format]
-    D --> E[build_source_index]
-    E --> F[extract]
-    F --> G[dedupe_requirements]
-    G --> H[retrieve_evidence]
-    H --> I[classify]
-    I --> J[evidence_grounding]
-    J --> K[generate]
-    K --> L[quality_gate]
-    L -->|repairable and enabled| M[repair_stories]
-    M --> L
-    L --> N[summarize]
-    N --> O
+    A[detect_file_type] --> B[prepare_sources]
+    B -->|usable chunks| C[build_source_index]
+    B -->|rejected/error/no chunks| M[format]
+    C --> D[extract]
+    D --> E[dedupe_requirements]
+    E --> F[retrieve_evidence]
+    F --> G[classify]
+    G --> H[evidence_grounding]
+    H --> I[generate]
+    I --> J[quality_gate]
+    J -->|repairable and enabled| K[repair_stories]
+    K --> J
+    J -->|pass / disabled / exhausted| L[summarize]
+    L --> M
