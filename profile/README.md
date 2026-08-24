@@ -147,16 +147,16 @@ Editable source: [`profile/diagrams/ai-pipeline.mmd`](./diagrams/ai-pipeline.mmd
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/Requra/frontend/main/docs/readme/screenshots/dashboard.png" alt="Requra.AI dashboard showing portfolio activity and project workspaces." width="49%">
-  <img src="https://raw.githubusercontent.com/Requra/frontend/main/docs/readme/screenshots/projects.png" alt="Requra.AI searchable projects workspace." width="49%">
+  <img src="https://raw.githubusercontent.com/Requra/frontend/main/docs/readme/screenshots/sources.png" alt="Requra.AI project overview with attached source files and analysis status." width="49%">
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Requra/frontend/main/docs/readme/screenshots/ai-results.png" alt="Requra.AI analysis results with requirements, stories, summaries, and quality metrics." width="49%">
+  <img src="https://raw.githubusercontent.com/Requra/frontend/main/docs/readme/screenshots/requirements.png" alt="Requra.AI analysis results with requirements, stories, summaries, and quality metrics." width="49%">
   <img src="https://raw.githubusercontent.com/Requra/frontend/main/docs/readme/screenshots/evidence.png" alt="Requra.AI evidence view connecting generated artifacts to source references." width="49%">
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Requra/frontend/main/docs/readme/screenshots/review-queue.png" alt="Requra.AI review queue with approval decisions, risks, open questions, and action items." width="49%">
+  <img src="https://raw.githubusercontent.com/Requra/frontend/main/docs/readme/screenshots/review.png" alt="Requra.AI review queue with approval decisions, risks, open questions, and action items." width="49%">
   <img src="https://raw.githubusercontent.com/Requra/frontend/main/docs/readme/screenshots/export.png" alt="Requra.AI export tab with a Jira-ready CSV download and a ClickUp push that creates real tasks." width="49%">
 </p>
 
