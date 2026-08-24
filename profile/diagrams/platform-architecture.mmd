@@ -13,12 +13,12 @@ flowchart LR
     BE --> BDB[(Backend PostgreSQL / Neon)]
     BE --> BW[Backend analysis worker\ncombine text · submit · poll · persist]
 
-    BW -->|POST /process-json| AI[FastAPI AI service\ncompatibility API + internal jobs]
-    BW -->|poll /status/{jobId}| AI
+    BW -->|POST /internal/process| AI[FastAPI AI service\ninternal jobs + compatibility API]
+    BW -->|poll /internal/jobs/{jobId}| AI
     AI --> ADB[(AI PostgreSQL durable state)]
     AI --> Q[Redis / RQ]
     Q --> W[AI worker]
-    W --> G[15-node LangGraph pipeline]
+    W --> G[13-node LangGraph pipeline]
     G --> ART[(PostgreSQL / pgvector artifacts)]
     G -.-> PROVIDERS[Conditional chat · STT · embeddings]
 
